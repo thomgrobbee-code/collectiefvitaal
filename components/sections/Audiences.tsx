@@ -78,7 +78,7 @@ export function Audiences() {
                   href="/#doe-mee"
                   arrow
                   className="mt-7"
-                  onClick={() => window.dispatchEvent(new CustomEvent("cv:kies-rol", { detail: a.role }))}
+                  onClick={() => window.dispatchEvent(new CustomEvent("cv:kies-rol", { detail: a.role === "individu" ? "Individu" : "Organisatie" }))}
                 >
                   {a.cta}
                 </ButtonLink>

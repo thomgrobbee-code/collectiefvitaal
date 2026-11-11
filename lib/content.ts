@@ -1,14 +1,7 @@
 import type { BrandIconName } from "@/components/brand/BrandIcon";
 
+/** Doelgroep van een tab in "Voor wie". In het formulier wordt dit Individu of Organisatie. */
 export type Role = "individu" | "werkgever" | "zorgorganisatie" | "gemeente" | "partner";
-
-export const roles: { value: Role; label: string }[] = [
-  { value: "individu", label: "Individu" },
-  { value: "werkgever", label: "Werkgever" },
-  { value: "zorgorganisatie", label: "Zorgorganisatie" },
-  { value: "gemeente", label: "Gemeente" },
-  { value: "partner", label: "Partner" },
-];
 
 export const domains: {
   id: string;

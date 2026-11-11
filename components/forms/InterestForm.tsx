@@ -3,12 +3,21 @@
 import { useEffect, useId, useState, type FormEvent } from "react";
 import { CircleCheck, CircleAlert, Clock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { roles, type Role } from "@/lib/content";
+import { BrandIcon, type BrandIconName } from "@/components/brand/BrandIcon";
 import { site } from "@/lib/site";
-import { validateInterest, type InterestPayload, type InterestResult } from "@/lib/interest";
+import { signupTypes, validateInterest, type InterestPayload, type InterestResult, type SignupType } from "@/lib/interest";
 
 type Errors = Partial<Record<keyof InterestPayload, string>>;
 type State = "idle" | "sending" | "sent" | "not-configured" | "error";
+
+const options: { value: SignupType; icon: BrandIconName; text: string }[] = [
+  { value: "Individu", icon: "profile", text: "Ik doe mee als persoon en blijf op de hoogte van de lancering." },
+  {
+    value: "Organisatie",
+    icon: "team",
+    text: "Ik sluit aan namens een organisatie (werkgever, zorgorganisatie, gemeente, vereniging of partner).",
+  },
+];
 
 const field =
   "w-full rounded-2xl border-2 border-light-gray bg-cream px-4 py-3 text-dark transition " +
@@ -17,15 +26,15 @@ const field =
 
 export function InterestForm() {
   const uid = useId();
-  const [role, setRole] = useState<Role>("individu");
+  const [role, setRole] = useState<SignupType | null>(null);
   const [errors, setErrors] = useState<Errors>({});
   const [state, setState] = useState<State>("idle");
 
   // Een CTA elders op de pagina kan de rol alvast kiezen.
   useEffect(() => {
     const onRole = (e: Event) => {
-      const r = (e as CustomEvent<Role>).detail;
-      if (roles.some((x) => x.value === r)) setRole(r);
+      const r = (e as CustomEvent<SignupType>).detail;
+      if (signupTypes.includes(r)) setRole(r);
     };
     window.addEventListener("cv:kies-rol", onRole);
     return () => window.removeEventListener("cv:kies-rol", onRole);
@@ -56,7 +65,10 @@ export function InterestForm() {
         setState("idle");
       } else {
         setState(data.status);
-        if (data.status === "sent") form.reset();
+        if (data.status === "sent") {
+          form.reset();
+          setRole(null);
+        }
       }
     } catch {
       setState("error");
@@ -87,23 +99,41 @@ export function InterestForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="mt-6 grid gap-4">
-      <fieldset className="grid gap-2">
-        <legend className={`${label} mb-2`}>Ik doe mee als</legend>
-        <div className="flex flex-wrap gap-2">
-          {roles.map((r) => (
+      <fieldset className="grid gap-2" aria-describedby={errors.role ? id("role-err") : undefined}>
+        <legend className={`${label} mb-2`}>Ik wil meedoen als</legend>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {options.map((o) => (
             <label
-              key={r.value}
-              className="cursor-pointer rounded-full border-2 border-light-gray px-3.5 py-2 text-sm font-extrabold transition-colors hover:border-mint has-[:checked]:border-deep has-[:checked]:bg-deep has-[:checked]:text-white has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-coral"
+              key={o.value}
+              className={`relative flex cursor-pointer items-start gap-4 rounded-[1.25rem] min-[900px]:flex-col min-[900px]:gap-3 border-2 bg-white p-4 pr-12 transition-colors hover:border-mint has-[:checked]:border-deep has-[:checked]:bg-light-green has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-coral sm:p-5 sm:pr-12 ${
+                errors.role ? "border-coral" : "border-light-gray"
+              }`}
             >
               <input
                 type="radio"
                 name="role"
-                value={r.value}
-                checked={role === r.value}
-                onChange={() => setRole(r.value)}
-                className="sr-only"
+                value={o.value}
+                checked={role === o.value}
+                onChange={() => {
+                  setRole(o.value);
+                  setErrors(({ role: _r, ...rest }) => rest);
+                }}
+                aria-describedby={id(`role-${o.value}`)}
+                className="peer sr-only"
               />
-              {r.label}
+              <span
+                aria-hidden
+                className="absolute top-4 right-4 grid size-6 place-items-center rounded-full border-2 border-[#b8c3cc] bg-white transition-colors after:size-3 after:rounded-full after:bg-deep after:opacity-0 after:transition-opacity after:content-[''] peer-checked:border-deep peer-checked:after:opacity-100"
+              />
+              <span aria-hidden className="grid size-14 shrink-0 place-items-center rounded-full bg-mint/35 text-vital-text">
+                <BrandIcon name={o.icon} className="size-7" />
+              </span>
+              <span className="grid gap-1 pt-1 min-[900px]:pt-0">
+                <span className="text-[1.15rem] leading-tight font-extrabold text-deep">{o.value}</span>
+                <span id={id(`role-${o.value}`)} className="text-sm leading-snug text-gray">
+                  {o.text}
+                </span>
+              </span>
             </label>
           ))}
         </div>
@@ -120,7 +150,7 @@ export function InterestForm() {
         <input id={id("email")} name="email" type="email" autoComplete="email" className={field} {...aria("email")} />
         {err("email")}
       </div>
-      {role !== "individu" && (
+      {role === "Organisatie" && (
         <div className="grid gap-1.5">
           <label htmlFor={id("organisation")} className={label}>Organisatie</label>
           <input id={id("organisation")} name="organisation" autoComplete="organization" className={field} {...aria("organisation")} />
