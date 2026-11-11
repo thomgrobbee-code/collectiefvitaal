@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* Merktokens, gelijk aan styles/tokens.css uit het brand asset pack */
+@theme {
+  --color-deep: #0f4c5c;
+  --color-deep-hover: #0b3a47;
+  --color-vital: #34c37b;
+  --color-vital-text: #1e7a4c; /* donkerdere variant van vital green voor tekst (contrast AA) */
+  --color-mint: #a8e6c2;
+  --color-light-green: #e6f7ee;
+  --color-coral: #ff8a7a;
+  --color-peach: #ffce9c;
+  --color-peach-soft: #ffebdd;
+  --color-lavender: #c8c9ff;
+  --color-lavender-soft: #eeeeff;
+  --color-light-blue: #ddeeff;
+  --color-cream: #fff8ee;
+  --color-dark: #1f2d3d;
+  --color-gray: #6b7c8d;
+  --color-light-gray: #e9eef2;
+  --color-on-deep: #d6ede4;
+
+  --font-sans: var(--font-nunito), ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --radius-card: 20px;
+  --radius-blob: 2rem;
+  --shadow-soft: 0 8px 24px rgba(15, 76, 92, 0.08);
+  --shadow-lift: 0 16px 36px rgba(15, 76, 92, 0.14);
+
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+  body {
+    @apply bg-cream text-dark font-sans antialiased;
+    font-size: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    @apply text-deep font-black tracking-tight;
+    text-wrap: balance;
+    line-height: 1.1;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility wrap {
+  margin-inline: auto;
+  max-width: 1180px;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+@utility band {
+  padding-block: clamp(64px, 9vw, 120px);
+}
+
+@utility eyebrow {
+  @apply text-vital-text text-sm font-extrabold uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Reveal: elementen zijn standaard zichtbaar; pas met JS (html.js) starten ze verborgen tot ze in beeld komen */
+.js [data-reveal]:not([data-shown]) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.js [data-reveal] {
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal]:not([data-shown]) { opacity: 1; transform: none; }
+}
