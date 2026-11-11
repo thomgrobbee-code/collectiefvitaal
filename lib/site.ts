@@ -14,7 +14,8 @@ export const site = {
 
 export const navItems = [
   { href: "/#ons-verhaal", label: "Ons verhaal" },
-  { href: "/#hoe-het-werkt", label: "Hoe het werkt" },
+  { href: "/#focusgebieden", label: "Focusgebieden" },
+  { href: "/#platform", label: "Platform" },
   { href: "/#voor-organisaties", label: "Voor organisaties" },
-  { href: "/#onze-impact", label: "Onze impact" },
+  { href: "/#onze-impact", label: "Impact" },
 ] as const;

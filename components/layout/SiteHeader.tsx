@@ -40,7 +40,7 @@ export function SiteHeader() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="rounded-full px-3.5 py-2.5 font-bold text-dark transition-colors hover:bg-light-green hover:text-deep"
+                className="rounded-full px-3 py-2.5 font-bold whitespace-nowrap text-dark transition-colors hover:bg-light-green hover:text-deep"
               >
                 {item.label}
               </Link>

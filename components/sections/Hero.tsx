@@ -29,9 +29,9 @@ export function Hero() {
             </span>
             <span className="mt-[0.18em] block">Samen maken we Nederland vitaler.</span>
           </h1>
-          <p className="mt-6 max-w-[38ch] text-[clamp(1.15rem,1.05rem+0.4vw,1.4rem)]">
-            We hoeven niet allemaal topsporter te worden. Als we allemaal op onze eigen manier een kleine stap zetten,
-            maken we samen een groot verschil.
+          <p className="mt-6 max-w-[44ch] text-[clamp(1.15rem,1.05rem+0.4vw,1.4rem)]">
+            We hoeven niet allemaal topsporter te worden. Door kleine stappen te zetten, elkaar te stimuleren en samen in
+            beweging te komen, maken we Nederland vitaler.
           </p>
           <ul aria-label="Voor wie" className="mt-6 flex flex-wrap gap-2">
             {forWhom.map((f) => (
@@ -44,8 +44,8 @@ export function Hero() {
             <ButtonLink href="/#doe-mee" arrow>
               Word onderdeel van de beweging
             </ButtonLink>
-            <ButtonLink href="/#ons-verhaal" variant="soft">
-              Ontdek ons verhaal
+            <ButtonLink href="/#hoe-het-werkt" variant="soft">
+              Ontdek hoe het werkt
             </ButtonLink>
           </div>
         </div>

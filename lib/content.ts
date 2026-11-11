@@ -11,6 +11,7 @@ export const roles: { value: Role; label: string }[] = [
 ];
 
 export const domains: {
+  id: string;
   title: string;
   icon: BrandIconName;
   text: string;
@@ -18,6 +19,7 @@ export const domains: {
   tone: string;
 }[] = [
   {
+    id: "beweging",
     title: "Beweging",
     icon: "movement",
     text: "Meer bewegen in je gewone dag, in je eigen tempo en op je eigen manier.",
@@ -25,6 +27,7 @@ export const domains: {
     tone: "bg-light-green",
   },
   {
+    id: "mentale-veerkracht",
     title: "Mentale veerkracht",
     icon: "mental-resilience",
     text: "Ruimte maken voor rust in je hoofd en beter omgaan met spanning.",
@@ -32,6 +35,7 @@ export const domains: {
     tone: "bg-lavender-soft",
   },
   {
+    id: "herstel-slaap",
     title: "Herstel & slaap",
     icon: "sleep-recovery",
     text: "Je lichaam en hoofd de tijd geven om bij te komen.",
@@ -39,10 +43,11 @@ export const domains: {
     tone: "bg-light-blue",
   },
   {
-    title: "Verbondenheid",
-    icon: "connection",
-    text: "Contact met anderen, want je samen goed voelen houdt je vitaal.",
-    example: "Samen wandelen, een collega uitnodigen, iets doen voor de buurt.",
+    id: "voeding",
+    title: "Voeding",
+    icon: "nutrition",
+    text: "Eten dat je energie geeft en dat je met plezier eet. Zonder dieet, zonder strenge regels.",
+    example: "Een handje groente extra bij het avondeten, fruit mee naar je werk, samen koken.",
     tone: "bg-peach-soft",
   },
 ];
@@ -50,7 +55,7 @@ export const domains: {
 export const steps = [
   {
     title: "Kies jouw kleine stap.",
-    text: "Kies iets uit een van de vier domeinen dat haalbaar is in jouw leven van nu. Klein is precies goed.",
+    text: "Kies iets uit een van de vier focusgebieden dat haalbaar is in jouw leven van nu. Klein is precies goed.",
   },
   {
     title: "Doe mee op jouw manier.",
@@ -86,7 +91,7 @@ export const audiences: Audience[] = [
       "Je ziet wat jouw kleine stap samen met die van anderen oplevert.",
       "Geen ranglijsten en geen vergelijking met anderen.",
     ],
-    cta: "Doe mee als deelnemer",
+    cta: "Meld je aan als deelnemer",
     role: "individu",
   },
   {
@@ -101,7 +106,7 @@ export const audiences: Audience[] = [
       "Inzicht in collectieve deelname, nooit in individuele gegevens van medewerkers.",
       "Je organisatie draagt zichtbaar bij aan een vitaler Nederland.",
     ],
-    cta: "Verken een pilot",
+    cta: "Start een pilot met je teams",
     role: "werkgever",
   },
   {
@@ -116,14 +121,14 @@ export const audiences: Audience[] = [
       "Een netwerk van werkgevers, gemeenten en verenigingen rondom dezelfde mensen.",
       "Meedenken over hoe het platform zorgvuldig en veilig wordt ingericht.",
     ],
-    cta: "Denk met ons mee",
+    cta: "Denk mee als zorgpartner",
     role: "zorgorganisatie",
   },
   {
     id: "gemeenten",
     tab: "Gemeenten",
     icon: "home",
-    title: "Voor gemeenten en maatschappelijke organisaties",
+    title: "Voor gemeenten",
     intro: "Een gezamenlijke beweging in je gemeente of regio, die inwoners, bedrijven en organisaties verbindt.",
     points: [
       "Een positief, gezamenlijk verhaal over gezondheid in de wijk.",
@@ -131,22 +136,23 @@ export const audiences: Audience[] = [
       "Samenwerking tussen lokale partners rond één collectief doel.",
       "Aansluiting op bestaand beleid voor preventie en gezondheid.",
     ],
-    cta: "Verken de mogelijkheden",
+    cta: "Verken een pilot in je gemeente",
     role: "gemeente",
   },
   {
     id: "verenigingen",
-    tab: "Verenigingen",
+    tab: "Verenigingen & partners",
     icon: "connection",
-    title: "Voor verenigingen en communities",
+    title: "Voor verenigingen, communities en maatschappelijke partners",
     intro: "Jullie brengen mensen al samen. Collectief Vitaal maakt zichtbaar wat jullie samen bijdragen.",
     points: [
       "Een gezamenlijk doel voor leden, vrijwilligers en buurtbewoners.",
       "Ruimte voor iedereen, ook voor wie niet competitief sport.",
       "Verbinding met andere verenigingen, werkgevers en de gemeente.",
       "Nieuwe mensen leren jullie club of community kennen.",
+      "Als maatschappelijk partner bouw je mee aan een beweging die verder gaat dan één organisatie.",
     ],
-    cta: "Sluit je aan als community",
+    cta: "Word partner of sluit je aan",
     role: "partner",
   },
 ];
@@ -157,4 +163,28 @@ export const seeking: { text: string; icon: BrandIconName }[] = [
   { text: "Zorgorganisaties die willen meedenken", icon: "heart" },
   { text: "Partners die maatschappelijke impact willen realiseren", icon: "connection" },
   { text: "Mensen die onderdeel willen worden van de beweging", icon: "profile" },
+];
+
+export const pillars: { title: string; icon: BrandIconName; text: string; tone: string; iconTone: string }[] = [
+  {
+    title: "Vitaliteit",
+    icon: "movement",
+    text: "Kleine, haalbare stappen in vier focusgebieden: beweging, mentale veerkracht, herstel & slaap en voeding.",
+    tone: "bg-light-green",
+    iconTone: "text-vital-text",
+  },
+  {
+    title: "Community",
+    icon: "connection",
+    text: "Samen met je team, je buurt of je vereniging. Verbondenheid is wat ons bindt: elkaar aanmoedigen in plaats van vergelijken.",
+    tone: "bg-peach-soft",
+    iconTone: "text-deep",
+  },
+  {
+    title: "Collectieve impact",
+    icon: "progress",
+    text: "Al die stappen tellen op tot één gedeeld resultaat. Voor organisaties, voor gemeenten en voor Nederland.",
+    tone: "bg-lavender-soft",
+    iconTone: "text-deep",
+  },
 ];

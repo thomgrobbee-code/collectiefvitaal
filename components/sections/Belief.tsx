@@ -3,7 +3,7 @@ import { Blob } from "@/components/ui/Blob";
 
 export function Belief() {
   return (
-    <section aria-labelledby="belief-title" className="band relative overflow-hidden">
+    <section aria-labelledby="belief-title" className="band relative overflow-hidden max-[859px]:pb-16">
       <div className="wrap grid items-center gap-10 min-[860px]:grid-cols-[1.05fr_1fr] lg:gap-18">
         <div data-reveal>
           <p className="eyebrow">Onze overtuiging</p>

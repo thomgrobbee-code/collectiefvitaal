@@ -2,18 +2,19 @@ import { BrandIcon } from "@/components/brand/BrandIcon";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Wave } from "@/components/ui/Blob";
 import { domains } from "@/lib/content";
+import { KnowledgeLayer } from "@/components/sections/KnowledgeLayer";
 
 export function Domains() {
   return (
-    <section aria-labelledby="domains-title">
+    <section id="focusgebieden" aria-labelledby="domains-title">
       <Wave className="text-white" />
       <div className="band bg-white">
         <div className="wrap">
           <SectionHeading
             id="domains-title"
-            eyebrow="De vier domeinen van vitaliteit"
+            eyebrow="Vier focusgebieden"
             title="Vitaliteit is meer dan sporten."
-            intro="Je kunt op vier manieren een kleine stap zetten. Kies wat nu bij je past."
+            intro="Je kunt op vier manieren een kleine stap zetten. Kies wat nu bij je past. Verbondenheid is geen apart vak: het zit in hoe we alles samen doen."
           />
           <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {domains.map((d, i) => (
@@ -35,6 +36,7 @@ export function Domains() {
               </li>
             ))}
           </ul>
+          <KnowledgeLayer />
         </div>
       </div>
       <Wave className="text-white" flip />
