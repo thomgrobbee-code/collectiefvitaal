@@ -4,9 +4,9 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ConceptLabel, GroupPost } from "@/components/concept/ConceptUI";
 
 const features: { icon: BrandIconName; title: string; text: string }[] = [
-  { icon: "community", title: "Ontdek gezamenlijke initiatieven", text: "Van een lunchwandeling op je werk tot een moestuin in de wijk." },
+  { icon: "community", title: "Ontdek gezamenlijke initiatieven", text: "Van samen koken in de buurt tot vaste pauzes op het werk." },
   { icon: "connection", title: "Volg communities", text: "Blijf op de hoogte van je team, je vereniging of je buurt." },
-  { icon: "calendar", title: "Deel groepsactiviteiten", text: "Laat zien wat jullie samen doen, en nodig anderen uit." },
+  { icon: "calendar", title: "Deel groepsactiviteiten", text: "Een ontspanningsavond, een kookclub of een beweegmoment: laat zien wat jullie samen doen." },
   { icon: "notification", title: "Inspireer andere groepen", text: "Een goed idee van de ene groep kan de volgende op weg helpen." },
   { icon: "heart", title: "Geef collectieve waardering", text: "Waardering gaat naar een initiatief of groep, nooit naar één persoon." },
 ];
@@ -70,7 +70,7 @@ export function Social() {
               Wat je hier níet ziet
             </p>
             <ul className="mt-3 grid gap-1.5 text-on-deep">
-              <li>Geen likeknop op persoonlijke prestaties.</li>
+              <li>Geen likes voor personen of persoonlijke prestaties.</li>
               <li>Geen volgers of populariteitsscores per persoon.</li>
               <li>Geen openbare individuele voortgang. Die blijft altijd privé.</li>
             </ul>

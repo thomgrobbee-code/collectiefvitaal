@@ -4,7 +4,7 @@ import { useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { BookOpen, ExternalLink, Footprints, Lightbulb, Users } from "lucide-react";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { domains } from "@/lib/content";
-import { evidenceLabels, knowledge, type KnowledgeItem } from "@/lib/knowledge";
+import { evidenceLabels, kindLabels, knowledge, type KnowledgeItem } from "@/lib/knowledge";
 
 /**
  * Kennislaag: per focusgebied Begrijpen (Wist je dat? + Wat betekent dit?),
@@ -93,8 +93,8 @@ export function KnowledgeLayer() {
 }
 
 export function KnowledgeCard({ item, hidden = false }: { item: KnowledgeItem; hidden?: boolean }) {
-  const ev = evidenceLabels[item.evidence];
-  const assumption = evidenceLabels.aanname;
+  const ev = item.evidence ? evidenceLabels[item.evidence] : null;
+  const kind = kindLabels[item.kind];
   return (
     <div
       role="tabpanel"
@@ -114,18 +114,23 @@ export function KnowledgeCard({ item, hidden = false }: { item: KnowledgeItem; h
       </Block>
       <Block icon={<Users className="size-5" />} label="Samen" step="Samen bijdragen" className="bg-peach-soft">
         <p>{item.samen}</p>
-        <span className={`mt-3 inline-block rounded-full px-2.5 py-1 text-xs font-extrabold ${assumption.tone}`} title={assumption.uitleg}>
-          {assumption.label}: nog niet onderzocht
-        </span>
       </Block>
 
       <div className="rounded-3xl border-2 border-light-gray bg-white p-5 min-[860px]:col-span-2">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <h4 className="text-sm font-extrabold tracking-widest text-gray uppercase">Wetenschappelijke bron</h4>
-          <span className={`rounded-full px-2.5 py-1 text-xs font-extrabold ${ev.tone}`}>{ev.label}</span>
+          <span className="rounded-full border-2 border-light-gray px-2.5 py-0.5 text-xs font-extrabold text-deep">{kind.label}</span>
+          {ev && <span className={`rounded-full px-2.5 py-1 text-xs font-extrabold ${ev.tone}`}>{ev.label}</span>}
         </div>
-        <p className="mt-2 text-sm">
-          {item.evidenceNote} <span className="text-gray">{ev.uitleg}</span>
+        <p className="mt-2 text-sm">{item.evidenceNote}</p>
+        <p className="mt-1 text-sm text-gray">
+          <strong className="font-bold">{kind.label}:</strong> {kind.uitleg}
+          {ev && (
+            <>
+              {" "}
+              <strong className="font-bold">{ev.label}:</strong> {ev.uitleg}
+            </>
+          )}
         </p>
         <ul className="mt-3 grid gap-2.5">
           {item.sources.map((s) => (

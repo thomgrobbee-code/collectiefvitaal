@@ -16,7 +16,7 @@
   --color-light-blue: #ddeeff;
   --color-cream: #fff8ee;
   --color-dark: #1f2d3d;
-  --color-gray: #6b7c8d;
+  --color-gray: #566676; /* iets donkerder dan merkgrijs #6b7c8d, voor leesbaar contrast (AA) op lichte vlakken */
   --color-light-gray: #e9eef2;
   --color-on-deep: #d6ede4;
 

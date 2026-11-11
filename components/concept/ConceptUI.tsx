@@ -63,11 +63,14 @@ export function GroupPost({
           <p className={`truncate font-extrabold text-deep ${large ? "" : "text-xs"}`}>{org}</p>
           <p className={`text-gray ${large ? "text-sm" : "text-[0.65rem]"}`}>{time} · groepsupdate</p>
         </div>
-        <span className={`ml-auto shrink-0 rounded-full bg-light-green font-extrabold text-vital-text ${large ? "px-3 py-1 text-xs" : "px-2 py-0.5 text-[0.6rem]"}`}>
-          {tag}
-        </span>
+        {large && (
+          <span className="ml-auto shrink-0 rounded-full bg-light-green px-3 py-1 text-xs font-extrabold text-vital-text">{tag}</span>
+        )}
       </header>
-      <h4 className={`mt-3 font-extrabold text-dark ${large ? "text-[1.2rem]" : "text-[0.8rem] leading-snug"}`}>{title}</h4>
+      {!large && (
+        <span className="mt-2.5 inline-block rounded-full bg-light-green px-2 py-0.5 text-[0.6rem] font-extrabold text-vital-text">{tag}</span>
+      )}
+      <p className={`${large ? "mt-3 text-[1.2rem]" : "mt-1 text-[0.8rem] leading-snug"} font-extrabold text-dark`}>{title}</p>
       {text && <p className={`mt-1.5 text-gray ${large ? "" : "text-[0.7rem] leading-snug"}`}>{text}</p>}
       {stat && (
         <p className={`mt-3 rounded-xl bg-cream font-bold text-deep ${large ? "px-4 py-3" : "px-2.5 py-1.5 text-[0.7rem]"}`}>{stat}</p>

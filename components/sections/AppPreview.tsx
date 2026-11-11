@@ -24,7 +24,7 @@ export function AppPreview() {
             intro="We bouwen het platform samen met de eerste deelnemers en partners. Deze schermen laten de richting zien. Het zijn conceptweergaven met verzonnen voorbeeldgegevens, nog geen werkende app."
           />
 
-          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-4 min-[1000px]:mx-0 min-[1000px]:grid min-[1000px]:grid-cols-3 min-[1000px]:overflow-visible min-[1000px]:px-0">
+          <div tabIndex={0} role="region" aria-label="Drie conceptschermen, scroll zijwaarts" className="-mx-5 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-4 min-[1000px]:mx-0 min-[1000px]:grid min-[1000px]:grid-cols-3 min-[1000px]:overflow-visible min-[1000px]:px-0">
             <div className="w-[min(290px,78vw)] shrink-0 snap-center min-[1000px]:w-auto" data-reveal>
               <Phone title="Tijdlijn" label="Collectieve tijdlijn">
                 <GroupPost
@@ -32,9 +32,18 @@ export function AppPreview() {
                   orgIcon="heart"
                   orgTone="bg-lavender-soft"
                   time="1 u"
-                  title="Elke dinsdag een lunchwandeling, ook voor bezoekers"
-                  tag="Beweging"
+                  title="Elke vrijdag samen tien minuten ontspannen, voor iedereen die wil"
+                  tag="Mentale veerkracht"
                   appreciations={42}
+                />
+                <GroupPost
+                  org="Voorbeeld BV, afdeling Service"
+                  orgIcon="calendar"
+                  orgTone="bg-light-blue"
+                  time="gisteren"
+                  title="Teamafspraak: na 18.00 uur geen werkberichten meer"
+                  tag="Herstel & slaap"
+                  appreciations={19}
                 />
                 <GroupPost
                   org="Sportvereniging Vooruit"
@@ -45,15 +54,6 @@ export function AppPreview() {
                   tag="Voeding"
                   appreciations={27}
                 />
-                <GroupPost
-                  org="Voorbeeld BV, afdeling Service"
-                  orgIcon="calendar"
-                  orgTone="bg-light-blue"
-                  time="gisteren"
-                  title="Teamafspraak: deze maand een echte lunchpauze"
-                  tag="Herstel"
-                  appreciations={19}
-                />
               </Phone>
             </div>
 
@@ -62,15 +62,15 @@ export function AppPreview() {
                 <div className="rounded-[1.25rem] bg-white p-3.5 shadow-[var(--shadow-soft)]">
                   <div className="flex items-center gap-2.5">
                     <span className="grid size-10 place-items-center rounded-xl bg-light-green text-deep">
-                      <BrandIcon name="movement" className="size-5.5" />
+                      <BrandIcon name="community" className="size-5.5" />
                     </span>
                     <div className="leading-tight">
-                      <p className="text-sm font-extrabold text-deep">Wandelgroep Rondje Wijk</p>
+                      <p className="text-sm font-extrabold text-deep">Vitaal in de Wijk Oost</p>
                       <p className="text-[0.65rem] text-gray">Open groep · iedereen welkom</p>
                     </div>
                   </div>
                   <p className="mt-2.5 text-[0.72rem] leading-snug text-gray">
-                    Samen wandelen in eigen tempo. Bewoners, collega&apos;s en de sportvereniging lopen mee.
+                    Samen bewegen, koken en ontspannen in de wijk. Bewoners, collega&apos;s en de sportvereniging doen mee.
                   </p>
                   <div className="mt-3 grid grid-cols-2 gap-2 text-[0.7rem] font-extrabold">
                     <span className="rounded-full bg-deep py-1.5 text-center text-white">Doe mee</span>
@@ -79,8 +79,9 @@ export function AppPreview() {
                 </div>
                 <p className="mt-1 px-1 text-[0.65rem] font-extrabold tracking-widest text-gray uppercase">Groepsactiviteiten</p>
                 {[
-                  ["Do", "12:15", "Lunchwandeling vanaf het gemeentehuis"],
-                  ["Za", "10:00", "Rondje door het park, ook met rollator"],
+                  ["Wo", "19:30", "Ontspanningsavond in het buurthuis"],
+                  ["Do", "12:15", "Lunchwandeling, ook met rollator"],
+                  ["Za", "11:00", "Samen koken met peulvruchten"],
                 ].map(([day, time, what]) => (
                   <div key={what} className="flex items-center gap-3 rounded-2xl bg-white p-2.5">
                     <span className="grid w-11 shrink-0 rounded-xl bg-peach-soft py-1 text-center leading-tight">
@@ -91,7 +92,7 @@ export function AppPreview() {
                   </div>
                 ))}
                 <div className="rounded-2xl bg-white p-2.5 text-[0.7rem] leading-snug text-gray">
-                  <strong className="text-deep">Geïnspireerd door jullie:</strong> Wandelgroep Noord start ook.
+                  <strong className="text-deep">Geïnspireerd door jullie:</strong> Buurt Noord start ook een kookavond.
                 </div>
               </Phone>
             </div>
