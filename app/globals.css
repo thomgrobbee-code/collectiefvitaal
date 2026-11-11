@@ -97,3 +97,6 @@
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal]:not([data-shown]) { opacity: 1; transform: none; }
 }
+
+/* Secties krijgen focus na een ankerlink; geen zichtbare focusrand op de hele sectie. */
+section[tabindex="-1"]:focus { outline: none; }

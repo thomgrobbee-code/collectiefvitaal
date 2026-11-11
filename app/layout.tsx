@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { RevealOnScroll } from "@/components/ui/Reveal";
+import { HashLinkScroll } from "@/components/ui/HashLinkScroll";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="inhoud">{children}</main>
         <SiteFooter />
         <RevealOnScroll />
+        <HashLinkScroll />
       </body>
     </html>
   );
