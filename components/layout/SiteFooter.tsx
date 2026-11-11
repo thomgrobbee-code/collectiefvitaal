@@ -18,6 +18,11 @@ export function SiteFooter() {
             <Logo inverted />
             <p className="mt-5 text-xl font-extrabold text-white">{site.promise}</p>
             <p className="mt-2 italic">{site.motto}</p>
+            <p className="mt-5">
+              <a href={`mailto:${site.email}`} className="font-bold text-mint underline-offset-4 hover:underline">
+                {site.email}
+              </a>
+            </p>
           </div>
           <nav aria-label="Footer">
             <ul className="flex flex-wrap gap-x-7 gap-y-3">

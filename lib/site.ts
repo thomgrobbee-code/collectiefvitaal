@@ -6,6 +6,8 @@ export const site = {
     "Collectief Vitaal is een maatschappelijke beweging en platform dat mensen, werkgevers, zorgorganisaties, gemeenten en communities samenbrengt rondom vitaliteit. Kleine stappen, samen een groot verschil.",
   motto: "Alleen ga je harder, maar samen kom je verder.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://collectiefvitaal.nl",
+  // Algemeen contactadres; ontvangt ook meldingen van het interesseformulier (via Apps Script).
+  email: "info@collectiefvitaal.nl",
   // Alleen tonen als er een LinkedIn-pagina is. Vul de URL in om de link zichtbaar te maken.
   linkedin: null as string | null,
 };

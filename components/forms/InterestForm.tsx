@@ -4,6 +4,7 @@ import { useEffect, useId, useState, type FormEvent } from "react";
 import { CircleCheck, CircleAlert, Clock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { roles, type Role } from "@/lib/content";
+import { site } from "@/lib/site";
 import { validateInterest, type InterestPayload, type InterestResult } from "@/lib/interest";
 
 type Errors = Partial<Record<keyof InterestPayload, string>>;
@@ -150,15 +151,18 @@ export function InterestForm() {
           <div className="flex gap-3 rounded-2xl bg-peach-soft p-4 text-sm font-bold text-dark">
             <Clock aria-hidden className="mt-0.5 size-5 shrink-0 text-deep" />
             <p>
-              Je aanmelding is <u>niet</u> verstuurd. Het formulier is nog niet gekoppeld aan onze mailbox. Dat regelen
-              we binnenkort. Probeer het dan nog eens.
+              Je aanmelding is <u>niet</u> verstuurd, want het formulier is nog niet gekoppeld. Mail ons zolang op{" "}
+              {site.email}.
             </p>
           </div>
         )}
         {state === "error" && (
           <div className="flex gap-3 rounded-2xl bg-peach-soft p-4 text-sm font-bold text-dark">
             <CircleAlert aria-hidden className="mt-0.5 size-5 shrink-0 text-[#B23B2A]" />
-            <p>Er ging iets mis bij het versturen, je aanmelding is niet aangekomen. Probeer het over een paar minuten opnieuw.</p>
+            <p>
+              Er ging iets mis bij het versturen, je aanmelding is niet aangekomen. Probeer het over een paar minuten
+              opnieuw of mail naar {site.email}.
+            </p>
           </div>
         )}
       </div>

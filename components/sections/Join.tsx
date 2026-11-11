@@ -2,6 +2,7 @@ import { BrandIcon } from "@/components/brand/BrandIcon";
 import { Illustration } from "@/components/ui/Illustration";
 import { InterestForm } from "@/components/forms/InterestForm";
 import { seeking } from "@/lib/content";
+import { site } from "@/lib/site";
 
 export function Join() {
   return (
@@ -37,6 +38,13 @@ export function Join() {
           <h3 className="text-[clamp(1.55rem,1.3rem+1.1vw,2.2rem)]">Bouw met ons mee.</h3>
           <p className="mt-2.5 text-gray">Laat weten wie je bent. We nemen contact op zodra er een plek voor je is.</p>
           <InterestForm />
+          <p className="mt-6 border-t border-light-gray pt-5 text-sm text-gray">
+            Liever direct contact? Mail naar{" "}
+            <a href={`mailto:${site.email}`} className="font-bold text-deep underline underline-offset-2">
+              {site.email}
+            </a>
+            .
+          </p>
         </div>
       </div>
     </section>

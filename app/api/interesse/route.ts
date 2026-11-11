@@ -36,10 +36,18 @@ export async function POST(request: Request) {
     const res = await fetch(webhook, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...result.data, receivedAt: new Date().toISOString(), source: "website" }),
+      body: JSON.stringify({
+        ...result.data,
+        receivedAt: new Date().toISOString(),
+        source: "website",
+        // Gedeeld geheim zodat het Apps Script alleen aanmeldingen van deze site accepteert.
+        token: process.env.INTEREST_WEBHOOK_SECRET ?? "",
+      }),
       signal: AbortSignal.timeout(8000),
     });
     if (!res.ok) throw new Error(`Webhook antwoordde ${res.status}`);
+    const reply = (await res.json().catch(() => null)) as { ok?: boolean } | null;
+    if (!reply?.ok) throw new Error("Webhook bevestigde de aanmelding niet");
     return NextResponse.json<InterestResult>({ status: "sent" });
   } catch (err) {
     console.error("[interesse] doorsturen mislukt", err);
